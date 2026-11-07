@@ -81,7 +81,7 @@ const groups = [
 const storeKey="cineteca-italiana-v2";let checked={};try{checked=JSON.parse(localStorage.getItem(storeKey)||"{}")}catch(e){}
 let filter="all";const root=document.getElementById("sections"),search=document.getElementById("search");
 const k=(g,i)=>g+"-"+i;
-const filmKey=title=>title.split(" (")[0].split(" · ")[0].normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[’']/g,"").replace(/[^a-z0-9]+/g," ").trim();
+const filmKey=title=>title.split(" (")[0].split(" · ")[0].normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[’']/g,"").replace(/[^a-z0-9]+/g," ").trim();
 const firstPlace=new Map();
 groups.forEach((g,gi)=>g[2].forEach((x,i)=>{const key=filmKey(x[1]);if(!firstPlace.has(key))firstPlace.set(key,{gi,i});}));
 const isPrimary=(gi,i)=>{const p=firstPlace.get(filmKey(groups[gi][2][i][1]));return p.gi===gi&&p.i===i;};
